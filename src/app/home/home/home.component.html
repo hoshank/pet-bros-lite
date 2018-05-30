@@ -1,0 +1,24 @@
+<mat-icon>home</mat-icon>
+<mat-tab-group class="home-tab-group">
+  <mat-tab label="Favourite Pets">
+    <div class="pet-card-list">
+      <!-- <h2 class="bar">Favourite Pets</h2> -->
+      <petbros-pet
+        *ngFor="let pet of favouritePets$ | async"
+        [pet]="pet">
+      </petbros-pet>
+    </div>
+    <!-- </div> -->
+  </mat-tab>
+  
+  <mat-tab label="Favourite Shelters">
+    <div class="shelter-card-list">
+        <!-- <h2 class="bar">Favourite Shelters</h2> -->
+        <petbros-shelter
+        *ngFor="let shelter of favouriteShelters$ | async"
+        [shelter]="shelter">
+      </petbros-shelter>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+  

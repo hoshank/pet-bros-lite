@@ -1,5 +1,11 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# nativescript
+hooks
+platforms
+
+app/**/*.js
+
 # compiled output
 /dist
 /tmp
@@ -23,6 +29,7 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.history
 
 # misc
 /.sass-cache

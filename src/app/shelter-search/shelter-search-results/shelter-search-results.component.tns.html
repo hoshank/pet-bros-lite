@@ -1,0 +1,11 @@
+<ActionBar title="Search Results" class="action-bar">
+</ActionBar>
+<StackLayout>
+  <ListView height="100%"
+    [items]="shelters"
+    class="list-group">
+    <ng-template let-shelter="item">
+      <petbros-shelter [shelter]="shelter"></petbros-shelter>
+    </ng-template>
+  </ListView>
+</StackLayout>

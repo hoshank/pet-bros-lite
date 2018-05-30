@@ -1,10 +1,29 @@
 import { Component } from '@angular/core';
+import { MenuItem } from './menu/menu.common';
 
 @Component({
-  selector: 'app-root',
+  moduleId: module.id,
+  selector: 'app-pet-bros',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  menuItems: MenuItem[] = [
+    {
+      title: 'Login',
+      link: ['/login']
+    },
+    {
+      title: 'Home',
+      link: ['/home']
+    },
+    {
+      title: 'Find a Pet',
+      link: ['/petSearch']
+    },
+    {
+      title: 'Find a Shelter',
+      link: ['/shelterSearch']
+    }
+  ];
 }

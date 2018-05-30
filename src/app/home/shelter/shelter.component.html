@@ -1,0 +1,9 @@
+<mat-card class="shelter-card" >
+  <mat-card-title [routerLink]="['/shelter', shelter._id]" color="accent">{{shelter.name}}</mat-card-title>
+  <mat-card-actions>
+    <button mat-button (click)="removeFromFavourites()">
+      <mat-icon color="warn">favorite_border</mat-icon>
+      <span>REMOVE FROM FAVOURITES</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,21 @@
+<h1 class="title">Find a Shelter</h1>
+
+<div class="form-container">
+  <mat-form-field class="form-input-field">
+    <input matInput
+      placeholder="Location"
+      [(ngModel)]="location">
+  </mat-form-field> <br/>
+
+  <mat-form-field class="form-input-field">
+    <input matInput
+      placeholder="Shelter Name"
+      [(ngModel)]="name">
+  </mat-form-field> <br/>
+
+  <button mat-raised-button
+    (click)="findShelters()"
+    color="primary">
+    Find Shelters
+  </button>
+</div>

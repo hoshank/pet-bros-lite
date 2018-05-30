@@ -1,0 +1,21 @@
+<ActionBar [title]="shelter?.name" class="action-bar">
+</ActionBar>
+<StackLayout>
+  <StackLayout *ngIf="shelter">
+    <Label [text]="shelter.name" class="h3"></Label>
+    <Label [text]="shelter.phone" class="h3"></Label>
+    <Label [text]="shelter.email" class="h3"></Label>
+  
+    <Label *ngIf="shelter.address1" [text]="shelter.address1" class="h3"></Label>
+    <Label *ngIf="shelter.address2" [text]="shelter.address2" class="h3"></Label>
+    <Label [text]="shelter.city + ', ' + shelter.state" class="h3"></Label>
+  
+    <Label [text]="'lat:' + shelter.latitude + ', long:' + shelter.longitude" class="h4"></Label>
+    
+    <Button *ngIf="!favourite" text="❤️" (tap)="addToFavourites()" class="btn btn-primary"></Button>
+    <Button *ngIf="favourite" text="💔" (tap)="removeFromFavourites()" class="btn btn-primary"></Button>
+  
+    <Label text="Shelter Pets" class="title"></Label>
+    <petbros-shelter-pets [shelterId]="shelter.id"></petbros-shelter-pets>
+  </StackLayout>
+</StackLayout>

@@ -1,0 +1,9 @@
+<DockLayout stretchLastChild="true">
+  <ScrollView orientation="horizontal">
+      <StackLayout orientation="horizontal">
+          <seed-menu-item *ngFor="let item of items"
+              [item]="item">
+          </seed-menu-item>
+      </StackLayout>
+  </ScrollView>
+</DockLayout>

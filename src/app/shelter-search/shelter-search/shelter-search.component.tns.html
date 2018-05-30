@@ -1,0 +1,8 @@
+<ActionBar title="Find a Shelter" class="action-bar">
+</ActionBar>
+
+<StackLayout class="p-x-10">
+  <TextField hint="location" [(ngModel)]="location"></TextField>
+  <TextField hint="name" [(ngModel)]="name"></TextField>
+  <Button (tap)="findShelters()" text="Find Shelters" class="btn btn-primary"></Button>
+</StackLayout>

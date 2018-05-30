@@ -1,0 +1,12 @@
+<ActionBar title="Search Results" class="action-bar">
+</ActionBar>
+<StackLayout>
+  <Label *ngIf="pets?.length === 0" text="no pets found" class="h1"></Label>
+  <ListView height="100%"
+    [items]="pets"
+    class="list-group">
+    <ng-template let-pet="item">
+      <petbros-pet [pet]="pet"></petbros-pet>
+    </ng-template>
+  </ListView>
+</StackLayout>

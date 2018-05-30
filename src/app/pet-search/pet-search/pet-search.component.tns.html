@@ -1,0 +1,23 @@
+<ActionBar title="Find a Pet" class="action-bar">
+</ActionBar>
+<GridLayout rows="*, auto" tkExampleTitle tkToggleNavButton class="p-x-10">
+
+  <RadDataForm row="0" [source]="searchOptions" (propertyCommitted)="onPropertyCommitted($event)"> 
+    <TKEntityProperty tkDataFormProperty name="location" displayName="Location" index="0">
+    </TKEntityProperty>
+    <TKEntityProperty tkDataFormProperty name="animal" displayName="Animal" index="1" [valuesProvider]="animals">
+      <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+    </TKEntityProperty>
+    <TKEntityProperty tkDataFormProperty name="breed" displayName="Breed" index="2" [valuesProvider]="breeds">
+      <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+    </TKEntityProperty>
+    <TKEntityProperty tkDataFormProperty name="age" displayName="Age" index="3" [valuesProvider]="ages">
+      <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+    </TKEntityProperty>
+    <TKEntityProperty tkDataFormProperty name="sex" displayName="Sex" index="4" [valuesProvider]="sexes">
+      <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+    </TKEntityProperty>
+  </RadDataForm>
+
+  <Button row="1" (tap)="findPets()" text="Find Pets" class="btn btn-primary"></Button>
+</GridLayout>

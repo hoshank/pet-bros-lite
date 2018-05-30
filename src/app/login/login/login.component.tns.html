@@ -1,0 +1,72 @@
+<ActionBar title="Login" class="action-bar">
+</ActionBar>
+
+<GridLayout backgroundColor="#CCCCCC">
+  <StackLayout verticalAlignment="center">
+    <StackLayout class="form m-10 p-15" backgroundColor="#FFFFFF">
+      <StackLayout class="input-field">
+        <Label text="email" class="label font-weight-bold m-b-5"></Label>
+        <TextField
+          #emailModel="ngModel"
+          hint="email..."
+          [(ngModel)]="email"
+          required email>
+        </TextField>
+
+        <StackLayout *ngIf="emailModel.errors && emailModel.touched"> 
+          <Label 
+            *ngIf="emailModel.errors.required"
+            text="email is missing"
+            class="validation">
+          </Label>
+          <Label 
+            *ngIf="emailModel.errors.email"
+            text="the email is not in the correct format"
+            class="validation">
+          </Label> 
+        </StackLayout> 
+
+        <StackLayout class="hr-light"></StackLayout>
+      </StackLayout>
+
+
+      <StackLayout class="input-field">
+        <Label text="password" class="label font-weight-bold m-b-5"></Label>
+        <TextField
+          #passwordModel="ngModel"
+          hint="password..."
+          [(ngModel)]="password"
+          secure="true"
+          required>
+        </TextField>
+
+        <StackLayout *ngIf="passwordModel.errors && passwordModel.touched"> 
+          <Label 
+            *ngIf="passwordModel.errors.required"
+            text="password is required"
+            class="validation">
+          </Label>
+        </StackLayout>
+
+        <StackLayout class="hr-light"></StackLayout>
+      </StackLayout>
+
+
+      <Button 
+        text="Login"
+        (tap)="login(emailModel.valid && passwordModel.valid)"
+        class="btn btn-primary w-full"
+        [class.btn-outline]="!(emailModel.valid && passwordModel.valid)"
+        [class.btn-primary]="emailModel.valid && passwordModel.valid">
+      </Button>
+
+      <Button
+        text="Register"
+        (tap)="register(emailModel.valid && passwordModel.valid)"
+        class="btn btn-primary w-full"
+        [class.btn-outline]="!(emailModel.valid && passwordModel.valid)"
+        [class.btn-primary]="emailModel.valid && passwordModel.valid">
+      </Button>
+    </StackLayout>
+  </StackLayout>
+</GridLayout>

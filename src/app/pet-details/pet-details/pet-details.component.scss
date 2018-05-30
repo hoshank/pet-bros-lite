@@ -1,0 +1,23 @@
+.pet-card {
+  width: 1000px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  img {
+    width: 500px;
+    max-height: 500px;
+  }
+
+  span {
+    padding-top: 10px;
+  }
+  mat-card-title {
+    width: 700px;
+  }
+
+  mat-card-actions {
+    align-self: center;
+  }
+}

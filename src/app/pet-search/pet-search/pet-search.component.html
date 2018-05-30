@@ -1,0 +1,45 @@
+<h1 class="title">Find a Pet</h1>
+
+<div class="form-container">
+
+  <mat-form-field class="form-input-field">
+    <input matInput
+      placeholder="Location"
+      [(ngModel)]="searchOptions.location">
+  </mat-form-field> <br/>
+
+  <mat-select placeholder="Animal Type" [(ngModel)]="searchOptions.animal" (change)="refreshBreeds()" class="form-select-field">
+    <mat-option *ngFor="let animal of animals"
+      [value]="animal.key">
+      {{animal.label}}
+    </mat-option>
+  </mat-select> <br/>
+
+  <mat-select placeholder="Breed" [(ngModel)]="searchOptions.breed" class="form-select-field">
+    <mat-option *ngFor="let breed of breeds"
+      [value]="breed.key">
+      {{breed.label}}
+    </mat-option>
+  </mat-select> <br/>
+
+  <mat-select placeholder="Age" [(ngModel)]="searchOptions.age" class="form-select-field">
+    <mat-option *ngFor="let age of ages"
+      [value]="age.key">
+      {{age.label}}
+    </mat-option>
+  </mat-select> <br/>
+
+  <mat-select placeholder="Sex" [(ngModel)]="searchOptions.sex" class="form-select-field">
+    <mat-option *ngFor="let sex of sexes"
+      [value]="sex.key">
+      {{sex.label}}
+    </mat-option>
+  </mat-select> <br/>
+
+  <button mat-raised-button
+    (click)="findPets()"
+    color="primary">
+    Find Pets
+  </button>
+
+</div>

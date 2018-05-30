@@ -1,0 +1,15 @@
+
+<mat-card class="pet-card" >
+  <mat-card-title [routerLink]="['/pet', pet.id]" color="accent">{{pet.name}}</mat-card-title>
+  <img [routerLink]="['/pet', pet.id]" mat-card-image [src]="pet.media.getFirstImage(3, './assets/images/generic-pet.jpg')">
+  <mat-card-actions>
+    <button *ngIf="!favourite"  mat-button (click)="addToFavourites()">
+      <mat-icon color="warn">favorite</mat-icon>
+      <span>ADD TO FAVOURITES</span>
+    </button>
+    <button *ngIf="favourite"  mat-button (click)="removeFromFavourites()">
+      <mat-icon color="warn">favorite_border</mat-icon>
+      <span>REMOVE FROM FAVOURITES</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

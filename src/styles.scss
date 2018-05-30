@@ -1,0 +1,73 @@
+@import './material.theme';
+
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin:0;
+  font-family: 'Open Sans', sans-serif;
+}
+.container {
+  margin:40px;
+}
+
+.bar {
+  width: 100%;
+  background-color: #2196F3;
+  color: white;
+}
+
+.tab-group {
+  border: 1px solid #e8e8e8;
+  width: 400px;
+}
+
+.tab-content {
+  padding: 16px;
+}
+
+.form-container {
+  border: 1px solid #e8e8e8;
+  width: 400px;
+  padding: 16px;
+}
+
+.form-input-field {
+  width: 100%;
+}
+
+.form-select-field {
+  width: 100%;
+  margin: 0 0 20px 0;
+}
+
+.shelter-card {
+  width: 300px;
+  margin: 5px;
+}
+
+.pet-card {
+  width: 250px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  img {
+    width: 300px;
+    max-height: 300px;
+  }
+
+
+  mat-card-title {
+    width: 200px;
+  }
+
+  mat-card-actions {
+    align-self: center;
+  }
+}
+
+.pet-card-list, .shelter-card-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,10 @@
+<mat-card class="pet-card" >
+  <mat-card-title [routerLink]="['/pet', pet._id]" color="accent">{{pet.name}}</mat-card-title>
+  <img [routerLink]="['/pet', pet._id]" mat-card-image [src]="pet.img">
+  <mat-card-actions>
+    <button mat-raised-button (click)="removeFromFavourites()">
+      <mat-icon color="warn">favorite_border</mat-icon>
+      <span>REMOVE FROM FAVOURITES</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

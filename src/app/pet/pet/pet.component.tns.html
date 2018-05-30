@@ -1,0 +1,9 @@
+<StackLayout>
+  <Label [text]="pet.name" class="title" [nsRouterLink]="['/pet', pet?.id]"></Label>
+  <Image [src]="pet.media.getFirstImage(3, '~/assets/images/generic-pet.jpg')" height="200" [nsRouterLink]="['/pet', pet?.id]"></Image>
+
+  <Button [text]="((favourite)? '💔 Remove ' : '❤️ Add ') + pet.name"
+    (tap)="updateFavourite()"
+    class="btn btn-primary">
+  </Button>
+</StackLayout>

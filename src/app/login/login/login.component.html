@@ -1,0 +1,78 @@
+<h1 class="title">Login</h1>
+
+
+
+<button mat-raised-button color="accent"
+  (click)="login(true)"
+  type="submit">Login
+</button>
+
+<mat-tab-group class="tab-group">
+  <mat-tab label="Login">
+    <form #loginForm="ngForm" class="tab-content">
+      <mat-form-field class="form-input-field">
+        <input matInput
+        placeholder="Email"
+        #emailModel="ngModel"
+        name="email"
+        type="email"
+        [(ngModel)]="email" 
+        required email >
+      </mat-form-field> <br/>
+      <mat-form-field class="form-input-field">
+        <input matInput
+        placeholder="Password"
+        #passwordModel="ngModel"
+        name="password"
+        [(ngModel)]="password"
+        type="password"
+        required>
+      </mat-form-field> <br/>
+      
+      <button mat-raised-button color="primary"
+        [disabled]="loginForm.invalid"
+        (click)="login(loginForm.valid)"
+        type="submit">Login
+      </button>
+    </form>
+  </mat-tab>
+
+  <mat-tab label="Register">
+    <form #registrationForm="ngForm" class="tab-content">
+      <mat-form-field class="form-input-field">
+        <input matInput
+        placeholder="Email"
+        #emailModel="ngModel"
+        name="email"
+        type="email"
+        [(ngModel)]="email" 
+        required email >
+      </mat-form-field> <br/>
+      <mat-form-field class="form-input-field">
+        <input matInput
+        placeholder="Password"
+        #passwordModel="ngModel"
+        name="password"
+        [(ngModel)]="password"
+        type="password"
+        required>
+      </mat-form-field> <br/>
+      
+      <mat-form-field class="form-input-field">
+        <input matInput placeholder="Name"
+        #emailModel="ngModel"
+        name="displayName"
+        [(ngModel)]="displayName"
+        type="name"
+        required>
+      </mat-form-field>
+      <br />
+      
+      <button mat-raised-button color="accent"
+        [disabled]="loginForm.invalid"
+        (click)="register(loginForm.valid)"
+        type="submit">Register
+      </button>
+    </form>
+  </mat-tab>
+</mat-tab-group>

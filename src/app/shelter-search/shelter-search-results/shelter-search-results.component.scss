@@ -1,0 +1,9 @@
+.shelter-card-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1450px;
+
+  border: 1px solid #e8e8e8;
+  padding: 16px;
+}

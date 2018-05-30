@@ -1,0 +1,45 @@
+<h1 class="title">Shelter Details</h1>
+
+<mat-card *ngIf="shelter" class="shelter-card" >
+  <mat-card-title>{{shelter.name}}</mat-card-title>
+  <mat-card-content>
+    <h5>Phone: {{shelter.phone}}</h5>
+    <h5>Email: {{shelter.email}}</h5>
+
+    <h4><b>Address</b></h4>
+    <h6>{{shelter.address1}}</h6>
+    <h6>{{shelter.address2}}</h6>
+    <h6>{{shelter.city}}, {{shelter.state}}</h6>
+
+    <h4>Location: lat={{shelter.latitude}} lon={{shelter.longitude}}</h4>
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="!favourite" mat-button (click)="addToFavourites()">
+      <mat-icon color="warn">favorite</mat-icon>
+      <span>ADD TO FAVOURITES</span>
+    </button>
+    <button *ngIf="favourite" mat-button (click)="removeFromFavourites()">
+      <mat-icon color="warn">favorite_border</mat-icon>
+      <span>REMOVE FROM FAVOURITES</span>
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<div class="shelter" *ngIf="shelter">
+  <!-- <h2>{{shelter.name}}</h2>
+
+  <h4>Phone: {{shelter.phone}}</h4>
+  <h4>Email: {{shelter.email}}</h4>
+
+  <h3><b>Address</b></h3>
+  <h5>{{shelter.address1}}</h5>
+  <h5>{{shelter.address2}}</h5>
+  <h5>{{shelter.city}}, {{shelter.state}}</h5>
+
+  <h4>Location: lat={{shelter.latitude}} lon={{shelter.longitude}}</h4>
+  <button *ngIf="!favourite" (click)="addToFavourites()">❤️</button>
+  <button *ngIf="favourite" (click)="removeFromFavourites()">💔</button> -->
+
+  <h2 class="bar">Shelter Pets:</h2>
+  <petbros-shelter-pets [shelterId]="shelter.id"></petbros-shelter-pets>
+</div>

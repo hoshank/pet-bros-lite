@@ -1,0 +1,8 @@
+<StackLayout
+  [nsRouterLink]="['/shelter', shelter?._id]"
+  class="p-x-10">
+  <Label [text]="'🏠 ' + shelter?.name" class="title"></Label>
+  <Label [text]="'💌 ' + shelter?.email" class="h3"></Label>
+  <Label [text]="'📱 ' + shelter?.phone" class="h3"></Label>
+  <button (tap)="removeFromFavourites()" text="💔" class="btn btn-primary"></button>
+</StackLayout>

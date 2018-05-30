@@ -1,0 +1,7 @@
+<ListView height="100%"
+  [items]="pets"
+  class="list-group">
+  <ng-template let-pet="item">
+    <petbros-pet [pet]="pet"></petbros-pet>
+  </ng-template>
+</ListView>

@@ -1,0 +1,11 @@
+<StackLayout [nsRouterLink]="['/shelter', shelter.id]">
+  <Label [text]="shelter.name" class="title"></Label>
+
+  <Label [text]="'phone: ' + shelter.phone" class="h4"></Label>
+  <Label [text]="'email: ' + shelter.email" class="h4"></Label>
+  
+  <Label [text]="shelter.city + ',' + shelter.state" class="h4"></Label>
+   
+  <Button *ngIf="!favourite" text="❤️" (tap)="addToFavourites()" class="btn btn-primary"></Button>
+  <Button *ngIf="favourite" text="💔" (tap)="removeFromFavourites()" class="btn btn-primary"></Button>
+</StackLayout>

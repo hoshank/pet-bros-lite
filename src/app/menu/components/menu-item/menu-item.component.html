@@ -1,0 +1,7 @@
+<button *ngIf="item"
+  mat-button [color]="(rla.isActive) ? 'accent' : ''"
+  #rla="routerLinkActive"
+  [routerLink]="item.link"
+  [routerLinkActive]="'active'">
+  {{item.title}}
+</button>
