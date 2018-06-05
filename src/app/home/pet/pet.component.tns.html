@@ -1,6 +1,6 @@
 <StackLayout [nsRouterLink]="['/pet', pet._id]">
   <StackLayout >
-    <Label [text]="pet.name" class="title"></Label>
+    <Label [text]="pet.name" class="title m-l-5"></Label>
     <Image [src]="pet.img" height="200"></Image>
   </StackLayout>
   <Button (tap)="removeFromFavourites()" text="💔" class="btn btn-primary"></Button>
