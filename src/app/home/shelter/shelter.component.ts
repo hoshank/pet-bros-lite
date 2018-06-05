@@ -14,6 +14,6 @@ export class ShelterComponent {
   constructor(private userService: UserService) { }
 
   removeFromFavourites() {
-    this.userService.removeShelterFromFavourites(this.shelter.id);
+    this.userService.removeShelterFromFavourites(this.shelter._id);
   }
 }
