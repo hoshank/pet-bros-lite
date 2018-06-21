@@ -1,5 +1,4 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 // nativescript
 import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
