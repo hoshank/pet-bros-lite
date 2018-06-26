@@ -1,25 +1,19 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, Subscription, BehaviorSubject, from } from 'rxjs';
+import { Observable, BehaviorSubject, from } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { PetBasic } from './models';
 import { Pet, Shelter } from 'petfinder-angular-service/models';
 import { assets } from './common/utils/defaults';
 
-class FirebaseUser {}
-class FirebaseList<T> {}
-
 import { User } from './models/user.model';
 import { Kinvey, CacheStore } from './common/utils/kinvey';
-import { PetSearchComponent } from './pet-search';
 
 @Injectable()
 export class UserService {
   private _favouritePets: CacheStore<PetBasic>;
   private _favouriteShelters: CacheStore<any>;
-  // private _favouritePets: FirebaseList<PetBasic>;
-  // private _favouriteShelters: FirebaseList<any>;
 
   private _user$: BehaviorSubject<User>;
   public get user$(): Observable<User> {
