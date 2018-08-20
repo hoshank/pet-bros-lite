@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
+import { Router } from '../../common/utils';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
+
 import { UserService } from '../../user.service';
 
 @Component({
@@ -41,10 +43,6 @@ export class LoginComponent implements OnInit {
 
       this.redirect();
     }
-  }
-
-  logout() {
-    this.userService.logout();
   }
 
   reset() {
