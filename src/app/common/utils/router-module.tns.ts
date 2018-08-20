@@ -1,1 +1,4 @@
-export { NativeScriptRouterModule as RouterModule } from 'nativescript-angular';
+export {
+  NativeScriptRouterModule as RouterModule,
+  RouterExtensions as Router
+} from 'nativescript-angular';

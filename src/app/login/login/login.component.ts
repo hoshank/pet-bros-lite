@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { UserService } from '../../user.service';
-import { NavigationService } from '../../navigation.service';
 
 @Component({
   selector: 'petbros-login',
@@ -17,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
       private userService: UserService,
-      private navigationService: NavigationService,
+      private router: Router,
       private route: ActivatedRoute
   ) { }
 
@@ -28,21 +27,19 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(isValid: boolean) {
+  async login(isValid: boolean) {
     if (isValid) {
-      this.userService.signIn(this.email, this.password)
-      .then(user => {
-        this.redirect();
-      });
+      await this.userService.signIn(this.email, this.password);
+
+      this.redirect();
     }
   }
 
-  register(isValid: boolean) {
+  async register(isValid: boolean) {
     if (isValid) {
-      this.userService.register(this.email, this.password, this.displayName)
-      .then(user => {
-        this.redirect();
-      });
+      await this.userService.register(this.email, this.password, this.displayName);
+
+      this.redirect();
     }
   }
 
@@ -50,20 +47,11 @@ export class LoginComponent implements OnInit {
     this.userService.logout();
   }
 
-  update() {
-    alert('remove update function');
-    // this.userService.updateUserDetails({
-    //   displayName: this.displayName,
-    //   photoURL: null,
-    //   email: this.email
-    // });
-  }
-
   reset() {
     this.userService.resetPassword('sebawita@gmail.com');
   }
 
   private redirect() {
-    this.navigationService.navigate(LoginComponent.REDIRECT_ROUTE, { clearHistory: true });
+    this.router.navigate(LoginComponent.REDIRECT_ROUTE, { clearHistory: true } as NavigationExtras);
   }
 }

@@ -12,7 +12,7 @@
   <mat-tab label="Favourite Shelters">
     <div class="shelter-card-list">
       <petbros-shelter
-        *ngFor="let shelter of user.favouriteShelters$ | async"
+        *ngFor="let shelter of favouriteShelters$ | async"
         [shelter]="shelter">
       </petbros-shelter>
     </div>

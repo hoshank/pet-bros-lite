@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '../../common';
+
 import { PetFinderService } from 'petfinder-angular-service';
-import { Pet, PetSearchOptions, Options, AvailableValues } from 'petfinder-angular-service/models';
-import { UserService } from '../../user.service';
-import { NavigationService } from '../../navigation.service';
+import { AvailableValues } from 'petfinder-angular-service/models';
 import { KeyLabel } from '../../models/key-label';
 
 @Component({
@@ -28,7 +28,7 @@ export class PetSearchComponent implements OnInit {
   public availableValues = AvailableValues;
 
   constructor(
-    private navigation: NavigationService,
+    private router: Router,
     private petfinderService: PetFinderService) { }
 
   ngOnInit(): void {
@@ -59,6 +59,6 @@ export class PetSearchComponent implements OnInit {
         'searchOptions': JSON.stringify(this.searchOptions)
       }
     };
-    this.navigation.navigate(['petSearch/results'], navigationExtras);
+    this.router.navigate(['petSearch/results'], navigationExtras);
   }
 }

@@ -8,8 +8,6 @@ import { SharedModule } from './shared';
 import { AppComponent } from './app.component';
 import { LoginModule } from './login';
 
-import { NavigationService } from './navigation.service';
-
 import { PetFinderService, API_KEY_TOKEN } from 'petfinder-angular-service';
 
 export const SHARED_MODULES: any[] = [

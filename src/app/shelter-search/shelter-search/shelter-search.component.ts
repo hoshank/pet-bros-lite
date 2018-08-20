@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationService } from '../../navigation.service';
+import { Router } from '../../common';
+
 import { PetFinderService } from 'petfinder-angular-service';
 import { AvailableValues } from 'petfinder-angular-service/models';
 import { KeyLabel } from '../../models/key-label';
@@ -21,7 +22,7 @@ export class ShelterSearchComponent implements OnInit {
   public breeds: KeyLabel[];
 
   constructor(
-    private navigation: NavigationService,
+    private router: Router,
     private petfinderService: PetFinderService) { }
 
   ngOnInit() {
@@ -47,7 +48,7 @@ export class ShelterSearchComponent implements OnInit {
         name: this.name
       }
     };
-    this.navigation.navigate(['shelterSearch/results'], navigationExtras);
+    this.router.navigate(['shelterSearch/results'], navigationExtras);
   }
 
   findSheltersByBreed() {
@@ -58,7 +59,7 @@ export class ShelterSearchComponent implements OnInit {
         breed: this.breed
       }
     };
-    this.navigation.navigate(['shelterSearch/results'], navigationExtras);
+    this.router.navigate(['shelterSearch/results'], navigationExtras);
   }
 
 }

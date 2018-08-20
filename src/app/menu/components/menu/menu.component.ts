@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 // app
 import { MenuItem } from '../../interfaces/MenuItem';
 import { UserService } from '../../../user.service';
-import { NavigationService } from '../../../navigation.service';
 
 @Component({
   selector: 'petbros-menu',
@@ -14,10 +13,9 @@ export class MenuComponent {
 
   public user$ = this.userService.user$;
 
-  constructor(private userService: UserService, private navigation: NavigationService) { }
+  constructor(private userService: UserService) { }
 
   logout() {
     this.userService.logout();
-    // this.navigation.navigate(['/login']);
   }
 }

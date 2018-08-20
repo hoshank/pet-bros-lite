@@ -19,9 +19,5 @@ export class HomeComponent implements OnInit {
     this.favouritePets$ = this.user.favouritePets$;
     this.favouriteShelters$ = this.user.favouriteShelters$;
   }
-
-  logout() {
-    this.user.logout();
-  }
 }
 

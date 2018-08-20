@@ -1,1 +1,1 @@
-export { RouterModule } from '@angular/router';
+export { RouterModule, Router } from '@angular/router';

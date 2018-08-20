@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+import { Router } from './common';
+import { NavigationExtras } from '@angular/router';
+
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
@@ -44,7 +47,7 @@ export class UserService {
     );
   }
 
-  constructor() {
+  constructor(private router: Router) {
     this._favouritePets = Kinvey.DataStore.collection<PetBasic>('pets');
     this._favouriteShelters = Kinvey.DataStore.collection<any>('shelters');
 
@@ -101,12 +104,13 @@ export class UserService {
   public async logout(): Promise<any> {
     this._user$.next(null);
     await Kinvey.User.logout();
+
+    this.router.navigate(['./login'], { clearHistory: true } as NavigationExtras);
   }
 
   public async resetPassword(username: string): Promise<any> {
     return Kinvey.User.resetPassword(username);
   }
-
 
   public addPetToFavourites(pet: Pet) {
     if (this.isLoggedIn()) {
