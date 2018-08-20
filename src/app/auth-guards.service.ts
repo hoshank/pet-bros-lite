@@ -32,7 +32,7 @@ export class AuthGuard implements CanLoad, CanActivate, CanActivateChild {
   }
 
   private isAuthorized(): Observable<boolean> {
-    return this.userService.user$.pipe(
+    return this.userService.currentUser.pipe(
       take(1),
       map(user => {
         if (user) {

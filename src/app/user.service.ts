@@ -15,44 +15,40 @@ import { Kinvey, CacheStore } from './common/utils/kinvey';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private _favouritePets: CacheStore<PetBasic>;
-  private _favouriteShelters: CacheStore<any>;
+  private petsStore: CacheStore<PetBasic>;
+  private sheltersStore: CacheStore<any>;
 
-  private _user$: BehaviorSubject<User>;
-  public get user$(): Observable<User> {
-    return this._user$;
+  private user$: BehaviorSubject<User>;
+  private pets$: BehaviorSubject<PetBasic[]> = new BehaviorSubject([]);
+  private shelters$: BehaviorSubject<any[]> = new BehaviorSubject([]);
+
+
+  public get currentUser(): Observable<User> {
+    return this.user$;
   }
 
   /**
    * Returns a long lived Observable, which returns pets for currently logged in user
-   * It will automatically switch to a new user when new user loggs in
+   * It will automatically switch to a new user when a new user loggs in
    */
   public get favouritePets$(): Observable<PetBasic[]> {
-    return this.user$.pipe(
-      switchMap(user =>
-        (user) ? this._favouritePets.find() : of([])
-      )
-    );
+    return this.pets$;
   }
 
   /**
    * Returns a long lived Observable, which returns shelters for currently logged in user
-   * It will automatically switch to a new user when new user loggs in
+   * It will automatically switch to a new user when a new user loggs in
    */
   public get favouriteShelters$(): Observable<any[]> {
-    return this.user$.pipe(
-      switchMap(user =>
-        (user) ? this._favouriteShelters.find() : of([])
-      )
-    );
+    return this.shelters$;
   }
 
   constructor(private router: Router) {
-    this._favouritePets = Kinvey.DataStore.collection<PetBasic>('pets');
-    this._favouriteShelters = Kinvey.DataStore.collection<any>('shelters');
+    const activeUser: any = Kinvey.User.getActiveUser();
+    this.user$ = new BehaviorSubject(this.parseUser(activeUser));
 
-    const user: any = Kinvey.User.getActiveUser();
-    this._user$ = new BehaviorSubject(this.parseUser(user));
+    this.preparePets();
+    this.prepareShelters();
   }
 
   parseUser(kinveyUser: Kinvey.User): User | null {
@@ -68,18 +64,13 @@ export class UserService {
     };
   }
 
-  private handleErrors(error: Kinvey.BaseError) {
-    console.error(error.message);
-    return error.message;
-  }
-
   public async signIn(username: string, password: string): Promise<User> {
     try {
       await Kinvey.User.logout();
 
       const kinveyUser = await Kinvey.User.login( username, password );
       const user = this.parseUser(kinveyUser);
-      this._user$.next(user);
+      this.user$.next(user);
 
       return user;
     } catch (error) {
@@ -93,7 +84,7 @@ export class UserService {
 
       const kinveyUser = await Kinvey.User.signup({ username, password, name });
       const user = this.parseUser(kinveyUser);
-      this._user$.next(user);
+      this.user$.next(user);
 
       return user;
     } catch (error) {
@@ -101,8 +92,13 @@ export class UserService {
     }
   }
 
+  private handleErrors(error: Kinvey.BaseError) {
+    console.error(error.message);
+    return error.message;
+  }
+
   public async logout(): Promise<any> {
-    this._user$.next(null);
+    this.user$.next(null);
     await Kinvey.User.logout();
 
     this.router.navigate(['./login'], { clearHistory: true } as NavigationExtras);
@@ -110,6 +106,40 @@ export class UserService {
 
   public async resetPassword(username: string): Promise<any> {
     return Kinvey.User.resetPassword(username);
+  }
+
+  private preparePets() {
+    this.petsStore = Kinvey.DataStore.collection<PetBasic>('pets');
+
+    const userPets$ = this.currentUser.pipe(
+      switchMap(user =>
+        (user) ? this.petsStore.find() : of([]),
+      )
+    );
+
+    userPets$.subscribe(this.pets$);
+  }
+
+  private async reloadPets() {
+    const pets = await this.petsStore.find().toPromise();
+    this.pets$.next(pets);
+  }
+
+  private prepareShelters() {
+    this.sheltersStore = Kinvey.DataStore.collection<any>('shelters');
+
+    const userShelters$ = this.currentUser.pipe(
+      switchMap(user =>
+        (user) ? this.sheltersStore.find() : of([]),
+      )
+    );
+
+    userShelters$.subscribe(this.shelters$);
+  }
+
+  private async reloadShelters() {
+    const shelters = await this.sheltersStore.find().toPromise();
+    this.shelters$.next(shelters);
   }
 
   public addPetToFavourites(pet: Pet) {
@@ -120,33 +150,42 @@ export class UserService {
         img: pet.media.getFirstImage(3, assets + '/images/generic-pet.jpg')
       };
 
-      this._favouritePets.save(newPet);
+      this.petsStore.save(newPet);
+
+      this.reloadPets();
     }
   }
-  public removePetFromFavourites(key: string) {
+
+  public async removePetFromFavourites(key: string) {
     if (this.isLoggedIn()) {
-      this._favouritePets.removeById(key);
+      await this.petsStore.removeById(key);
+
+      this.reloadPets();
     }
   }
 
   public addShelterToFavourites(shelter: Shelter) {
     if (this.isLoggedIn()) {
-      this._favouriteShelters.save({
+      this.sheltersStore.save({
         _id: shelter.id,
         name: shelter.name || '',
         phone: shelter.phone || '',
         email: shelter.email || '',
       });
+
+      this.reloadShelters();
     }
   }
 
   public removeShelterFromFavourites(key: string) {
     if (this.isLoggedIn()) {
-      this._favouriteShelters.removeById(key);
+      this.sheltersStore.removeById(key);
+
+      this.reloadShelters();
     }
   }
 
   private isLoggedIn(): boolean {
-    return (this._user$.value) ? true : false;
+    return (this.user$.value) ? true : false;
   }
 }

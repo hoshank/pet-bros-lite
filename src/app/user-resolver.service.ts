@@ -14,7 +14,7 @@ export class UserResolver implements Resolve<void> {
   }
 
   resolve(): Observable<any> {
-    return this.userService.user$.pipe(take(1));
+    return this.userService.currentUser.pipe(take(1));
   }
 }
 

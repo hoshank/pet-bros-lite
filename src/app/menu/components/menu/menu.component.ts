@@ -11,7 +11,7 @@ import { UserService } from '../../../user.service';
 export class MenuComponent {
   @Input() items: MenuItem[];
 
-  public user$ = this.userService.user$;
+  public user$ = this.userService.currentUser;
 
   constructor(private userService: UserService) { }
 
