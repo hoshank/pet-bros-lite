@@ -6,7 +6,6 @@ import { UserService } from '../../user.service';
 @Component({
   selector: 'petbros-pet',
   templateUrl: './pet.component.html',
-  // styleUrls: ['./pet.component.scss']
 })
 export class PetComponent {
   @Input() pet: PetBasic;

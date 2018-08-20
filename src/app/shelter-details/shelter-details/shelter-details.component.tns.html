@@ -12,8 +12,8 @@
   
     <Label [text]="'lat:' + shelter.latitude + ', long:' + shelter.longitude" class="h4"></Label>
     
-    <Button *ngIf="!favourite" text="❤️" (tap)="addToFavourites()" class="btn btn-primary"></Button>
-    <Button *ngIf="favourite" text="💔" (tap)="removeFromFavourites()" class="btn btn-primary"></Button>
+    <Button *ngIf="!favourite" text="★ Add to Favourites" (tap)="addToFavourites()" class="btn btn-primary"></Button>
+    <Button *ngIf="favourite" text="☆ Remove from Favourites" (tap)="removeFromFavourites()" class="btn btn-primary"></Button>
   
     <Label text="Shelter Pets" class="title"></Label>
     <petbros-shelter-pets [shelterId]="shelter.id"></petbros-shelter-pets>

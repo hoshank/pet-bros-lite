@@ -26,20 +26,6 @@
 </mat-card>
 
 <div class="shelter" *ngIf="shelter">
-  <!-- <h2>{{shelter.name}}</h2>
-
-  <h4>Phone: {{shelter.phone}}</h4>
-  <h4>Email: {{shelter.email}}</h4>
-
-  <h3><b>Address</b></h3>
-  <h5>{{shelter.address1}}</h5>
-  <h5>{{shelter.address2}}</h5>
-  <h5>{{shelter.city}}, {{shelter.state}}</h5>
-
-  <h4>Location: lat={{shelter.latitude}} lon={{shelter.longitude}}</h4>
-  <button *ngIf="!favourite" (click)="addToFavourites()">❤️</button>
-  <button *ngIf="favourite" (click)="removeFromFavourites()">💔</button> -->
-
   <h2 class="bar">Shelter Pets:</h2>
   <petbros-shelter-pets [shelterId]="shelter.id"></petbros-shelter-pets>
 </div>

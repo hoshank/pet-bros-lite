@@ -4,7 +4,7 @@
 
 <TabView #tabView>
   <StackLayout *tabItem="{title: 'Favourite Pets'}">
-    <Button [nsRouterLink]="['/petSearch']" text="Find More Pets" class="btn btn-primary"></Button>
+    <Button [nsRouterLink]="['/petSearch']" text="Find More Pets" class="btn btn-primary btn-grey"></Button>
     
     <ListView height="100%"
       [items]="favouritePets$ | async" 
@@ -16,7 +16,7 @@
   </StackLayout>
 
   <StackLayout *tabItem="{title: 'Favourite Shelters'}">
-    <Button [nsRouterLink]="['/shelterSearch']" text="Find More Shelters" class="btn btn-primary"></Button>
+    <Button [nsRouterLink]="['/shelterSearch']" text="Find More Shelters" class="btn btn-primary btn-grey"></Button>
     
     <ListView height="100%"
       [items]="favouriteShelters$ | async"
