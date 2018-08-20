@@ -4,7 +4,6 @@ import { AuthGuard } from './auth-guards.service';
 import { UserResolver } from './user-resolver.service';
 
 import { loginRoutes } from './login';
-import { LoginComponent } from './login/login/login.component';
 
 export const guards = [
   AuthGuard,
@@ -25,34 +24,33 @@ export const AppRoutes: Routes = [
   {
     path: 'login',
     children: loginRoutes,
-    // resolve: {
-    //   user: UserResolver,
-    // },
+    resolve: {
+      user: UserResolver,
+    },
   },
   {
     path: 'home',
     loadChildren: './home/home.module#HomeModule',
-    // component: HomeComponent,
-    // ...authGuards
+    ...authGuards
   },
   {
     path: 'petSearch',
     loadChildren: './pet-search/pet-search.module#PetSearchModule',
-    // ...authGuards
+    ...authGuards
   },
   {
     path: 'shelterSearch',
     loadChildren: './shelter-search/shelter-search.module#ShelterSearchModule',
-    // ...authGuards
+    ...authGuards
   },
   {
     path: 'pet/:petId',
     loadChildren: './pet-details/pet-details.module#PetDetailsModule',
-    // ...authGuards
+    ...authGuards
   },
   {
     path: 'shelter/:shelterId',
     loadChildren: './shelter-details/shelter-details.module#ShelterDetailsModule',
-    // ...authGuards
+    ...authGuards
   }
 ];

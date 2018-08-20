@@ -8,11 +8,10 @@ import {
   Route,
   RouterStateSnapshot,
 } from '@angular/router';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 
 import { UserService } from './user.service';
-import { Kinvey } from './common/utils/kinvey';
 
 @Injectable()
 export class AuthGuard implements CanLoad, CanActivate, CanActivateChild {
