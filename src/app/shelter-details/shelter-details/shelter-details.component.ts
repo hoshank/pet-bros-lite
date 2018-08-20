@@ -5,7 +5,6 @@ import { Shelter } from 'petfinder-angular-service/models';
 import { UserService } from '../../user.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'petbros-shelter-details',
   templateUrl: './shelter-details.component.html',
   styleUrls: ['./shelter-details.component.scss']

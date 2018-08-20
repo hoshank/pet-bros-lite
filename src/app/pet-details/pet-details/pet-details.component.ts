@@ -5,7 +5,6 @@ import { Pet } from 'petfinder-angular-service/models';
 import { UserService } from '../../user.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'petbros-pet-details',
   templateUrl: './pet-details.component.html',
   styleUrls: ['./pet-details.component.scss']

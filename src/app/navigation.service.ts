@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
-// import { NavigationOptions } from 'nativescript-angular/router/ns-location-strategy';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class NavigationService {
   constructor(private router: Router) { }
 

@@ -3,7 +3,6 @@ import { PetFinderService } from 'petfinder-angular-service';
 import { Pet } from 'petfinder-angular-service/models';
 
 @Component({
-  moduleId: module.id,
   selector: 'petbros-shelter-pets',
   templateUrl: './shelter-pets.component.html',
   styleUrls: ['./shelter-pets.component.scss']

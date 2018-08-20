@@ -3,7 +3,6 @@ import { Shelter } from 'petfinder-angular-service/models';
 import { UserService } from '../../user.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'petbros-shelter',
   templateUrl: './shelter.component.html',
   styleUrls: ['./shelter.component.scss']
@@ -11,7 +10,6 @@ import { UserService } from '../../user.service';
 export class ShelterComponent {
   @Input() shelter: Shelter;
 
-  // TODO: find a way to initialise this value based on the favourite list in FireBase
   public favourite = false;
 
   constructor(private userService: UserService) { }

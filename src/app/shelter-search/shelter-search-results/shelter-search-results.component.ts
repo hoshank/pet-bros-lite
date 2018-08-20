@@ -4,7 +4,6 @@ import { Shelter } from 'petfinder-angular-service/models';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  moduleId: module.id,
   selector: 'petbros-shelter-search-results',
   templateUrl: './shelter-search-results.component.html',
   styleUrls: ['./shelter-search-results.component.scss']

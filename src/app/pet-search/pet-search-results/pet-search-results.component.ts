@@ -5,7 +5,6 @@ import { UserService } from '../../user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  moduleId: module.id,
   selector: 'petbros-pet-search-results',
   templateUrl: './pet-search-results.component.html',
   styleUrls: ['./pet-search-results.component.scss']

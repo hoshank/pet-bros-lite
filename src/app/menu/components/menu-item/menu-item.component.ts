@@ -3,8 +3,7 @@ import { Component, Input } from '@angular/core';
 import { MenuItem } from '../../interfaces/MenuItem';
 
 @Component({
-    moduleId: module.id,
-    selector: 'seed-menu-item',
+    selector: 'petbros-menu-item',
     templateUrl: './menu-item.component.html',
     styleUrls: ['./menu-item.component.scss']
 })

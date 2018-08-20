@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
-  <seed-menu-item 
+  <petbros-menu-item 
     *ngFor="let item of items"
     [item]="item"
     class="nav-button">
-  </seed-menu-item>
+  </petbros-menu-item>
   
   <button *ngIf="(user$ | async)"
    mat-button

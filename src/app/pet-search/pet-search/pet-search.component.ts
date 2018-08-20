@@ -6,7 +6,6 @@ import { NavigationService } from '../../navigation.service';
 import { KeyLabel } from '../../models/key-label';
 
 @Component({
-  moduleId: module.id,
   selector: 'petbros-pet-search',
   templateUrl: './pet-search.component.html',
   styleUrls: ['./pet-search.component.scss']

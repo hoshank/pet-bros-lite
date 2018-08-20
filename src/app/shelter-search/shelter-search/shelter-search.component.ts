@@ -5,7 +5,6 @@ import { AvailableValues } from 'petfinder-angular-service/models';
 import { KeyLabel } from '../../models/key-label';
 
 @Component({
-  moduleId: module.id,
   selector: 'petbros-shelter-search',
   templateUrl: './shelter-search.component.html',
   styleUrls: ['./shelter-search.component.scss']

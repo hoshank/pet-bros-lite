@@ -5,8 +5,7 @@ import { UserService } from '../../../user.service';
 import { NavigationService } from '../../../navigation.service';
 
 @Component({
-  moduleId: module.id,
-  selector: 'seed-menu',
+  selector: 'petbros-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
@@ -19,6 +18,6 @@ export class MenuComponent {
 
   logout() {
     this.userService.logout();
-    this.navigation.navigate(['/login']);
+    // this.navigation.navigate(['/login']);
   }
 }

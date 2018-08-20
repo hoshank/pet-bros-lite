@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { Kinvey } from 'kinvey-nativescript-sdk';
 
 @Component({
-  selector: 'app-root',
-  moduleId: module.id,
+  selector: 'petbros-root',
   templateUrl: './app.component.html',
 })
 export class AppComponent {

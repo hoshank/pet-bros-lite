@@ -1,4 +1,5 @@
 <ActionBar title="Home" icon="" class="action-bar">
+    <ActionItem text="Logout" ios.position="true" (tap)="user.logout()"></ActionItem>
 </ActionBar>
 
 <TabView #tabView>
@@ -18,7 +19,7 @@
     <Button [nsRouterLink]="['/shelterSearch']" text="Find More Shelters" class="btn btn-primary"></Button>
     
     <ListView height="100%"
-      [items]="favouriteShelters$ | async"
+      [items]="user.favouriteShelters$ | async"
       class="list-group">
       <ng-template let-shelter="item">
         <petbros-shelter [shelter]="shelter" class="list-group-item"></petbros-shelter>

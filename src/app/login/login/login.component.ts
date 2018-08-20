@@ -4,7 +4,6 @@ import { UserService } from '../../user.service';
 import { NavigationService } from '../../navigation.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'petbros-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, BehaviorSubject, from } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { PetBasic } from './models';
@@ -10,7 +10,7 @@ import { assets } from './common/utils/defaults';
 import { User } from './models/user.model';
 import { Kinvey, CacheStore } from './common/utils/kinvey';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class UserService {
   private _favouritePets: CacheStore<PetBasic>;
   private _favouriteShelters: CacheStore<any>;
@@ -26,22 +26,9 @@ export class UserService {
    */
   public get favouritePets$(): Observable<PetBasic[]> {
     return this.user$.pipe(
-      switchMap(user => {
-        if (user) {
-          return Observable.create(observer => {
-            const pets$ = this._favouritePets.find();
-            const subscription = pets$.subscribe(pets => {
-              observer.next(pets);
-            });
-
-            // probably there is no need to usubsribe, as find doesn't return a stream, but a one off Observable
-            return () => subscription.unsubscribe();
-          });
-        } else {
-          // fallback
-          return new BehaviorSubject([]);
-        }
-      })
+      switchMap(user =>
+        (user) ? this._favouritePets.find() : of([])
+      )
     );
   }
 
@@ -51,21 +38,9 @@ export class UserService {
    */
   public get favouriteShelters$(): Observable<any[]> {
     return this.user$.pipe(
-      switchMap(user => {
-        if (user) {
-          return Observable.create(observer => {
-            const shelters$ = this._favouriteShelters.find();
-            const subscription = shelters$.subscribe(shelters => {
-              observer.next(shelters);
-            });
-
-            // probably there is no need to usubsribe, as find doesn't return a stream, but a one off Observable
-            return () => subscription.unsubscribe();
-          });
-        } else {
-          return new BehaviorSubject([]);
-        }
-      })
+      switchMap(user =>
+        (user) ? this._favouriteShelters.find() : of([])
+      )
     );
   }
 
@@ -124,8 +99,8 @@ export class UserService {
   }
 
   public async logout(): Promise<any> {
-    await Kinvey.User.logout();
     this._user$.next(null);
+    await Kinvey.User.logout();
   }
 
   public async resetPassword(username: string): Promise<any> {

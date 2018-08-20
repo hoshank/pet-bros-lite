@@ -15,7 +15,10 @@ import { UserService } from './user.service';
 
 @Injectable()
 export class AuthGuard implements CanLoad, CanActivate, CanActivateChild {
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   canActivateChild(_childRoute: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<boolean> {
     return this.isAuthorized();

@@ -3,7 +3,7 @@ import { MenuItem } from './menu/menu.common';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-pet-bros',
+  selector: 'petbros-app',
   templateUrl: './app.component.html',
 })
 export class AppComponent {

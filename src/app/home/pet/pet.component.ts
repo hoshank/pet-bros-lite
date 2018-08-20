@@ -4,7 +4,6 @@ import { PetBasic } from '../../models';
 import { UserService } from '../../user.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'petbros-pet',
   templateUrl: './pet.component.html',
   // styleUrls: ['./pet.component.scss']
