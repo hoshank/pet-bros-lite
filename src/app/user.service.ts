@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Observable, BehaviorSubject, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 
 import { PetBasic } from './models';
 import { Pet, Shelter } from 'petfinder-angular-service/models';
@@ -9,6 +10,7 @@ import { assets } from './common/utils/defaults';
 
 import { User } from './models/user.model';
 import { Kinvey, CacheStore } from './common/utils/kinvey';
+import { NavigationService } from './navigation.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -26,6 +28,7 @@ export class UserService {
    */
   public get favouritePets$(): Observable<PetBasic[]> {
     return this.user$.pipe(
+      tap(() => 'loading Pets *********'),
       switchMap(user =>
         (user) ? this._favouritePets.find() : of([])
       )
@@ -38,13 +41,14 @@ export class UserService {
    */
   public get favouriteShelters$(): Observable<any[]> {
     return this.user$.pipe(
+      tap(() => 'loading Shelters *********'),
       switchMap(user =>
         (user) ? this._favouriteShelters.find() : of([])
       )
     );
   }
 
-  constructor() {
+  constructor(private navigation: NavigationService) {
     this._favouritePets = Kinvey.DataStore.collection<PetBasic>('pets');
     this._favouriteShelters = Kinvey.DataStore.collection<any>('shelters');
 
@@ -101,6 +105,9 @@ export class UserService {
   public async logout(): Promise<any> {
     this._user$.next(null);
     await Kinvey.User.logout();
+
+    console.log('logging out!!!');
+    this.navigation.navigate(['/login'], { clearHistory: true });
   }
 
   public async resetPassword(username: string): Promise<any> {
