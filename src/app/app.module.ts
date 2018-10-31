@@ -7,6 +7,7 @@ import { Config } from './common/index';
 import { SHARED_MODULES, COMPONENT_DECLARATIONS, PROVIDERS } from './app.common';
 
 import { HomeModule } from './home/home.module';
+import { ClarityModule } from '@clr/angular';
 
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
@@ -20,6 +21,7 @@ Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
     HttpClientModule,
     HomeModule,
     ...SHARED_MODULES,
+    ClarityModule,
   ],
   providers: [
     ...PROVIDERS

@@ -1,7 +1,60 @@
 <button *ngIf="item"
-  mat-button [color]="(rla.isActive) ? 'accent' : ''"
+  class="btn btn-link"
   #rla="routerLinkActive"
   [routerLink]="item.link"
   [routerLinkActive]="'active'">
   {{item.title}}
 </button>
+
+
+<!-- 
+<div class="main-container">
+  <div class="alert  alert-app-level alert-success" role="alert">
+    <div class="alert-items">
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+            </div>
+            <span class="alert-text">Welcome to the Clarity Basic App. This is an app level basic alert.</span>
+        </div>
+    </div>
+</div>
+  <header class="header header-6">
+      <div class="header-nav">
+          <a href="javascript://" class="active nav-link nav-text" *ngIf="item"
+            #rla="routerLinkActive"
+            [routerLink]="item.link"
+            [routerLinkActive]="'active'">
+            {{item.title}}
+          </a>
+          <a href="javascript://" class="nav-link nav-text">Interactive Analytics</a>
+      </div>
+     
+  </header>
+  <nav class="subnav">
+      ...
+  </nav>
+  <div class="content-container">
+      <div class="content-area">
+      
+<div class="row">
+  <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+      <a href="..." class="card clickable">
+          <div class="card-img">
+              <img src="...">
+          </div>
+          <div class="card-block">
+              <p class="card-text">
+                  ...
+              </p>
+          </div>
+      </a>
+  </div>
+</div>
+
+      </div>
+      <nav class="sidenav">
+          ...
+      </nav>
+  </div>
+</div> -->

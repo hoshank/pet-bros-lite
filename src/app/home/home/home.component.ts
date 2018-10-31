@@ -13,11 +13,36 @@ export class HomeComponent implements OnInit {
   public favouritePets$: Observable<PetBasic[]>;
   public favouriteShelters$: Observable<any[]>;
 
-  constructor(public user: UserService) { }
+  petsTabActive;
+  sheletrsTabActive;
+
+  constructor(public user: UserService) { 
+    
+  }
 
   ngOnInit() {
     this.favouritePets$ = this.user.favouritePets$;
     this.favouriteShelters$ = this.user.favouriteShelters$;
   }
+
+  ngOnAfterViewInit(){
+    this.petsTabActive= true;
+    this.sheletrsTabActive=false;
+  }
+
+
+  tabChange(tab){
+    if(tab=='pets'){
+      this.petsTabActive= true;
+      this.sheletrsTabActive=false;
+    }
+    else if(tab=="shelters"){
+      this.petsTabActive=false;
+      this.sheletrsTabActive=true;
+    }
+   
+  }
+
+
 }
 

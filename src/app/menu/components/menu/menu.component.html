@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<!-- <mat-toolbar color="primary">
   <petbros-menu-item 
     *ngFor="let item of items"
     [item]="item"
@@ -11,4 +11,38 @@
    color="warn">
    Sign Out {{(user$ | async)?.name}}
   </button>
-</mat-toolbar>
+</mat-toolbar> -->
+
+
+
+    <div class="alert  alert-app-level alert-success" role="alert">
+      <div class="alert-items">
+          <div class="alert-item static">
+              <div class="alert-icon-wrapper">
+                  <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+              </div>
+              <span class="alert-text">Welcome to the Clarity Basic App. This is an app level basic alert.</span>
+          </div>
+      </div>
+  </div>
+
+
+
+
+<header class="header header-6">
+    <petbros-menu-item 
+    *ngFor="let item of items"
+    [item]="item"
+    class="nav-button">
+  </petbros-menu-item>
+  
+
+
+  <button *ngIf="(user$ | async)"
+  class="btn btn-info"
+  (click)="logout()"
+  >
+  Sign Out {{(user$ | async)?.name}}
+</button>
+  </header>
+

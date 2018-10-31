@@ -3,6 +3,7 @@ import { MatTabsModule, MatCardModule, MatButtonModule } from '@angular/material
 import { MatIconModule } from '@angular/material/icon';
 import { SHARED_MODULES, COMPONENT_DECLARATIONS } from './home.common';
 
+
 @NgModule({
   imports: [
     ...SHARED_MODULES,

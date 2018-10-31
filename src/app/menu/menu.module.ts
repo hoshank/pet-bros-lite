@@ -4,12 +4,13 @@ import { MatToolbarModule, MatButtonModule } from '@angular/material';
 // app
 import { SHARED_MODULES, COMPONENT_DECLARATIONS, COMPONENT_EXPORTS } from './menu.common';
 
+
 @NgModule({
     imports: [
         ...SHARED_MODULES,
         RouterModule,
         MatToolbarModule,
-        MatButtonModule
+        MatButtonModule,
     ],
     declarations: [
         ...COMPONENT_DECLARATIONS

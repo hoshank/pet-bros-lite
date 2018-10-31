@@ -1,10 +1,8 @@
-<mat-card *ngIf="pet" class="pet-card" >
+<!-- <mat-card *ngIf="pet" class="pet-card" >
   <mat-card-title>{{pet.name}}</mat-card-title>
   
   <img [src]="pet.media.getFirstImage(4, './assets/images/generic-pet.jpg')" />
 
-  <!-- Convert this to a galery -->
-  <!-- <img *ngFor="let media of pet.media.getImages(4)" [src]="media"/> -->
 
   <span>{{pet.description}}</span>
 
@@ -18,4 +16,28 @@
       <span>REMOVE FROM FAVOURITES</span>
     </button>
   </mat-card-actions>
-</mat-card>
+</mat-card> -->
+
+
+<div class="card" *ngIf="pet" >
+  <div class="card-img">
+      <img [src]="pet.media.getFirstImage(4, './assets/images/generic-pet.jpg')" />
+  </div>
+  <div class="card-block">
+      <h4 class="card-title">  <span>{{pet.description}}</span></h4>
+      <p class="card-text">
+        <span>{{pet.description}}</span>
+      </p>
+  </div>
+
+  <div class="card-footer">
+    <button *ngIf="!favourite" mat-button (click)="addToFavourites()">
+      <mat-icon color="warn">favorite</mat-icon>
+      <span>ADD TO FAVOURITES</span>
+    </button>
+    <button *ngIf="favourite" mat-button (click)="removeFromFavourites()">
+      <mat-icon color="warn">favorite_border</mat-icon>
+      <span>REMOVE FROM FAVOURITES</span>
+    </button>
+  </div>
+</div>

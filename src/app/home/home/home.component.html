@@ -1,21 +1,48 @@
-<mat-icon>home</mat-icon>
-<mat-tab-group class="home-tab-group">
-  <mat-tab label="Favourite Pets">
-    <div class="pet-card-list">
-      <petbros-pet
-        *ngFor="let pet of favouritePets$ | async"
-        [pet]="pet">
-      </petbros-pet>
-    </div>
-  </mat-tab>
-  
-  <mat-tab label="Favourite Shelters">
-    <div class="shelter-card-list">
-      <petbros-shelter
-        *ngFor="let shelter of favouriteShelters$ | async"
-        [shelter]="shelter">
-      </petbros-shelter>
-    </div>
-  </mat-tab>
-</mat-tab-group>
-  
+<div *ngIf="favouritePets$">
+  <clr-tabs>
+    <clr-tab>
+      <button clrTabLink id="link1">Favourite Pets</button>
+      <clr-tab-content id="content1" *clrIfActive="petsTabActive">
+
+          <div class="row">
+              <petbros-pet *ngFor="let pet of favouritePets$ | async" [pet]="pet">
+              </petbros-pet>
+          
+
+   
+        </div>
+
+      </clr-tab-content>
+
+    </clr-tab>
+    <clr-tab>
+      <button clrTabLink>Favourite Shelters</button>
+      <clr-tab-content *clrIfActive="sheletrsTabActive">
+        <petbros-shelter *ngFor="let shelter of favouriteShelters$ | async" [shelter]="shelter">
+        </petbros-shelter>
+      </clr-tab-content>
+    </clr-tab>
+  </clr-tabs>
+</div>
+
+
+
+<div class="hiddenDiv">
+  <!-- <mat-icon>home</mat-icon> -->
+  <mat-tab-group class="home-tab-group">
+    <mat-tab label="Favourite Pets">
+      <div class="row">
+        <petbros-pet *ngFor="let pet of favouritePets$ | async" [pet]="pet">
+        </petbros-pet>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Favourite Shelters">
+      <div class="shelter-card-list">
+        <petbros-shelter *ngFor="let shelter of favouriteShelters$ | async" [shelter]="shelter">
+        </petbros-shelter>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
